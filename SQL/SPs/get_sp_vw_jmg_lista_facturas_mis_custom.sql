@@ -38,6 +38,7 @@ AS
 BEGIN  
 	SET NOCOUNT ON  
 	
+	
 	IF @filtrar_por_fecha = 1
 	BEGIN
 		SELECT 
