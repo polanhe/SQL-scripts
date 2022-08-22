@@ -37,8 +37,7 @@ ALTER PROCEDURE [dbo].[get_sp_vw_jmg_lista_facturas_mis_custom]
 AS 
 BEGIN  
 	SET NOCOUNT ON  
-	
-	
+		
 	IF @filtrar_por_fecha = 1
 	BEGIN
 		SELECT 
