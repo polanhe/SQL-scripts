@@ -1,9 +1,9 @@
---DECLARE	@id_empresa					INT = 2
---DECLARE	@id_distribuidor			INT	= NULL
---DECLARE	@id_fabrica					INT = 40
---DECLARE	@fecha_inicial				VARCHAR(10) = '20200101'
---DECLARE	@fecha_final				VARCHAR(10) = '20221231'
---DECLARE	@texto_referencia			VARCHAR(100) = NULL 
+DECLARE	@id_empresa					INT = 2
+DECLARE	@id_distribuidor			INT	= NULL
+DECLARE	@id_fabrica					INT = 41
+DECLARE	@fecha_inicial				VARCHAR(10) = '20200101'
+DECLARE	@fecha_final				VARCHAR(10) = '20221231'
+DECLARE	@texto_referencia			VARCHAR(100) = NULL 
 
 ------------DECLARE @pedido		VARCHAR(20) = '12652012'
 ------------DECLARE @factura	VARCHAR(20) = '190971156'
@@ -21,25 +21,25 @@
 --GO
 
 
-IF ( OBJECT_ID('dbo.get_sp_jmg_reporte_kardex') IS NOT NULL )  
-BEGIN
-    DROP PROCEDURE dbo.get_sp_jmg_reporte_kardex  
-END
-GO
+--IF ( OBJECT_ID('dbo.get_sp_jmg_reporte_kardex') IS NOT NULL )  
+--BEGIN
+--    DROP PROCEDURE dbo.get_sp_jmg_reporte_kardex  
+--END
+--GO
 
-/****** Object:  StoredProcedure [dbo].[get_sp_jmg_reporte_kardex]    Script Date: 07-Aug-18 7:24:34 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[get_sp_jmg_reporte_kardex]
-	@id_empresa					INT,
-	@id_distribuidor			INT	= NULL,
-	@id_fabrica					INT = NULL,
-    @fecha_inicial				VARCHAR(10) = NULL,
-    @fecha_final				VARCHAR(10) = NULL,
-	@texto_referencia			VARCHAR(100) = NULL 
-AS 
+--/****** Object:  StoredProcedure [dbo].[get_sp_jmg_reporte_kardex]    Script Date: 07-Aug-18 7:24:34 PM ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_IDENTIFIER ON
+--GO
+--CREATE PROCEDURE [dbo].[get_sp_jmg_reporte_kardex]
+--	@id_empresa					INT,
+--	@id_distribuidor			INT	= NULL,
+--	@id_fabrica					INT = NULL,
+--    @fecha_inicial				VARCHAR(10) = NULL,
+--    @fecha_final				VARCHAR(10) = NULL,
+--	@texto_referencia			VARCHAR(100) = NULL 
+--AS 
 BEGIN  
 --	SET NOCOUNT ON  
 

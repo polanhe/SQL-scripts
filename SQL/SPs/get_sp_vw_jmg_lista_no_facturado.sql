@@ -8,19 +8,21 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-   
+
+IF ( OBJECT_ID('dbo.get_sp_vw_jmg_lista_no_facturado') IS NOT NULL )  
+BEGIN
+    DROP PROCEDURE dbo.get_sp_vw_jmg_lista_no_facturado  
+END
+GO
+
 -- ===============================================================================================================================   
--- Author:		Luis O. Gonzalez    
--- Create date: Lunes, 28 de febrero de 2011 
--- Description: Procecimiento Almacenado para hacer SELECT en base a la llave primaria a la tabla vw_jmg_lista_acuses_mis 
--- Project:     HPIT Framework (Sephia.net 3.5.2011.18)
+-- Author:		Hugo Polanco 
+-- Create date: Lunes, 5 de septiembre de 2022
+-- Description: Procecimiento almacenado para obtener lista de facturas con items pendientes de facturacion.
+-- Project:     HPIT Framework (Sephia.net 4.6)
 -- Organization: HPIT Consulting
---  --------------------------------------------------
--- Author:		Hugo Polanco   
--- Create date: Miercoles, 17 de agosto de 2022
--- Description: Agregar NO FACTURADO
 -- ===============================================================================================================================   
-ALTER PROCEDURE [dbo].[get_sp_vw_jmg_lista_facturas_mis_custom]
+CREATE PROCEDURE [dbo].[get_sp_vw_jmg_lista_no_facturado]
 	@periodo						AS	INT	=	NULL,
 	@id_pais						AS	VARCHAR(2) =	NULL,
 	@id_pedido						AS	INT	=	NULL,
@@ -76,8 +78,8 @@ BEGIN
 			total_cobrar
 		FROM
 			dbo.vw_jmg_lista_facturas_mis
-		WHERE
-				CASE WHEN @periodo IS NULL THEN 1 ELSE periodo END = CASE WHEN @periodo IS NULL THEN 1 ELSE @periodo END
+		WHERE	no_facturado > 0
+			AND	CASE WHEN @periodo IS NULL THEN 1 ELSE periodo END = CASE WHEN @periodo IS NULL THEN 1 ELSE @periodo END
 			AND CASE WHEN @id_pais IS NULL THEN 'A' ELSE id_pais END = CASE WHEN @id_pais IS NULL THEN 'A' ELSE @id_pais END
 			AND CASE WHEN @id_pedido IS NULL THEN 1 ELSE id_pedido END = CASE WHEN @id_pedido IS NULL THEN 1 ELSE @id_pedido END
 			AND CASE WHEN @id_factura IS NULL THEN 1 ELSE id_factura END = CASE WHEN @id_factura IS NULL THEN 1 ELSE @id_factura END
@@ -128,8 +130,8 @@ BEGIN
 			total_cobrar
 		FROM
 			dbo.vw_jmg_lista_facturas_mis
-		WHERE
-				CASE WHEN @periodo IS NULL THEN 1 ELSE periodo END = CASE WHEN @periodo IS NULL THEN 1 ELSE @periodo END
+		WHERE	no_facturado > 0
+			AND	CASE WHEN @periodo IS NULL THEN 1 ELSE periodo END = CASE WHEN @periodo IS NULL THEN 1 ELSE @periodo END
 			AND CASE WHEN @id_pais IS NULL THEN 'A' ELSE id_pais END = CASE WHEN @id_pais IS NULL THEN 'A' ELSE @id_pais END
 			AND CASE WHEN @id_pedido IS NULL THEN 1 ELSE id_pedido END = CASE WHEN @id_pedido IS NULL THEN 1 ELSE @id_pedido END
 			AND CASE WHEN @id_factura IS NULL THEN 1 ELSE id_factura END = CASE WHEN @id_factura IS NULL THEN 1 ELSE @id_factura END
